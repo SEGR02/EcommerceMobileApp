@@ -1,0 +1,568 @@
+#: kivy 2.1.0
+ScreenManager:
+    Login:
+    Menu:
+    Registro:
+    HomeScreen:
+<Login>:
+    MDScreen:
+        name: "login"
+    MDFloatLayout:
+        id: login
+        md_bg_color: 1,1,1,1
+
+    MDIconButton:
+        icon: "chevron-up"
+        user_font_size: "35sp"
+        pos_hint: {"center_y": .95}
+        on_release: 
+            root.regg()
+            root.manager.transition.direction = 'up'
+            input_correo.text= ""
+            input_contraseña.text= ""
+
+    Image:
+        source: "assets/log.png"
+        size_hint: .36, .36
+        pos_hint: {"center_x": .22, "center_y": .8}
+        
+    MDLabel:
+        text: "Registrate"
+        font_size: "18sp"
+        font_name: "fonts/Poppins-Regular.ttf"
+        pos_hint: {"center_x": .615, "center_y": .949}
+        
+    MDLabel:
+        text: "Novedades Alviarez"
+        font_size: "20sp"
+        font_name: "fonts/Poppins-Regular.ttf"
+        color: 255/255, 162/255, 3/255
+        pos_hint: {"center_x": .830, "center_y": .841}
+
+    MDLabel:
+        text: "Trabajamos Para Ti"
+        font_size: "15sp"
+        font_name: "fonts/Poppins-Medium.ttf"
+        color: "black"
+        pos_hint: {"center_x": .917, "center_y": .810}
+    
+    MDTextField:
+        id:input_correo
+        hint_text: "Ingresa Tu Correo Electronico"
+        helper_text: ""
+        font_name: "fonts/Poppins-Regular.ttf"
+        line_color_normal: 255/255, 162/255, 3/255
+        hint_text_color_focus: 255/255, 162/255, 3/255
+        line_color_focus: "black"
+        helper_text_mode: "persistent"
+        pos_hint: {"center_x": .5, "center_y": .52}
+
+        size_hint_x: .85
+        line_color_focus: 0,0,0,1
+
+    Image:
+        source: "assets/usuario.png"
+        size_hint: .10, .10
+        pos_hint: {"center_x": .90, "center_y": .54}
+    
+    MDTextField:
+        id:input_contraseña
+        hint_text: "Ingresa Tu Contraseña"
+        helper_text: ""
+        font_name: "fonts/Poppins-Regular.ttf"
+        line_color_normal: 255/255, 162/255, 3/255
+        hint_text_color_focus: 255/255, 162/255, 3/255
+        line_color_focus: "black" 
+        helper_text_mode: "persistent"
+        pos_hint: {"center_x": .5, "center_y": .42}
+
+        size_hint_x: .85
+        line_color_focus: 0,0,0,1
+        password: True
+    Image:
+        source: "assets/llave.png"
+        size_hint: .10, .10
+        pos_hint: {"center_x": .90, "center_y": .44}
+
+    MDTextButton:
+        text: "¿Has Olvidado Tu Contraseña?"
+        font_size: "9sp"
+        font_name: "fonts/Poppins-Regular.ttf"
+        haling: "center"
+        color: 120/255, 120/255, 120/255, 1
+        pos_hint: {"center_x":.715 ,"center_y": .370}
+
+    MDFlatButton:
+        text: "Ingresar"
+        size_hint: .79, .08
+        font_name: "fonts/Poppins-Medium.ttf"
+        pos_hint: {"center_x": .50, "center_y":.25} 
+        on_release: 
+            root.connect()
+            input_correo.text= ""
+            input_contraseña.text= ""
+        canvas.before:
+            Color:
+                rgb: 255/255, 162/255, 3/255
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [6]
+    MDIconButton:
+        icon: "home-circle-outline"
+        icon_size: "44sp"
+        pos_hint: {"center_x": .50, "center_y":.10}
+		icon_color: 41/255, 135/255, 168/255
+        on_release: 
+            root.home()
+            root.manager.transition.direction = 'up'
+            input_correo.text= ""
+            input_contraseña.text= ""
+    
+<Menu>:
+    name:'prin'
+    MDScreen:
+        name: "prin"
+    MDFloatLayout:
+        id: prin
+        md_bg_color: 1,1,1,1
+
+    MDIconButton:
+        icon: "chevron-left"
+        user_font_size: "35sp"
+        pos_hint: {"center_y": .95}
+        on_release: root.desconectar()
+
+    Image:
+        source: "assets/lapiz.png"
+        size_hint: .36, .36
+        pos_hint: {"center_x": .22, "center_y": .8}
+
+    MDLabel:
+        text: "Atras"
+        font_size: "18sp"
+        font_name: "fonts/Poppins-Regular.ttf"
+        pos_hint: {"center_x": .615, "center_y": .949}
+        
+    
+    MDLabel:
+        text: "Menu Principal"
+        font_size: "20sp"
+        font_name: "fonts/Poppins-Regular.ttf"
+        pos_hint: {"center_x": .917, "center_y": .841}
+
+    MDLabel:
+        text: "Bienvenido"
+        font_size: "15sp"
+        font_name: "fonts/Poppins-Medium.ttf"
+        color: 120/255, 120/255, 120/255, 1
+        pos_hint: {"center_x": .917, "center_y": .810}
+    
+<Registro>:
+    MDScreen:
+        name: "reg"
+    MDFloatLayout:
+        id: reg
+        md_bg_color: 1,1,1,1
+
+    MDIconButton:
+        icon: "chevron-down"
+        user_font_size: "35sp"
+        pos_hint: {"center_y": .95}
+        on_release: 
+            root.manager.current ='login'
+            root.manager.transition.direction = 'down'
+            reg_correo.text= ""
+            reg_contraseña.text= ""
+            val_contraseña.text= ""
+    Image:
+        source: "assets/register.png"
+        size_hint: .40, .40
+        pos_hint: {"center_x": .22, "center_y": .8}
+
+    MDLabel:
+        text: "Atras"
+        font_size: "18sp"
+        font_name: "fonts/Poppins-Regular.ttf"
+        pos_hint: {"center_x": .615, "center_y": .949}
+    
+    MDLabel:
+        text: "Registro"
+        font_size: "20sp"
+        font_name: "fonts/Poppins-Regular.ttf"
+        color: 255/255, 162/255, 3/255
+        pos_hint: {"center_x": .917, "center_y": .841}
+
+    MDLabel:
+        text: "Novedades Alviarez"
+        font_size: "15sp"
+        font_name: "fonts/Poppins-Medium.ttf"
+        color: "black"
+        pos_hint: {"center_x": .917, "center_y": .810}
+    
+    MDTextField:
+        id:reg_correo
+        hint_text: "Ingresa Tu Correo Electronico"
+        helper_text: ""
+        font_name: "fonts/Poppins-Regular.ttf"
+        line_color_normal: 255/255, 162/255, 3/255
+        hint_text_color_focus: 255/255, 162/255, 3/255
+        line_color_focus: "black"
+        helper_text_mode: "persistent"
+        pos_hint: {"center_x": .5, "center_y": .52}
+
+        size_hint_x: .85
+        line_color_focus: 0,0,0,1
+
+    Image:
+        source: "assets/usuario.png"
+        size_hint: .10, .10
+        pos_hint: {"center_x": .90, "center_y": .54}
+    
+    MDTextField:
+        id:reg_contraseña
+        hint_text: "Ingresa tu contraseña"
+        helper_text: ""
+        font_name: "fonts/Poppins-Regular.ttf"
+        line_color_normal: 255/255, 162/255, 3/255
+        hint_text_color_focus: 255/255, 162/255, 3/255
+        line_color_focus: "black"
+        helper_text_mode: "persistent"
+        pos_hint: {"center_x": .5, "center_y": .42}
+
+        size_hint_x: .85
+        line_color_focus: 0,0,0,1
+        password: True
+    Image:
+        source: "assets/llave.png"
+        size_hint: .10, .10
+        pos_hint: {"center_x": .90, "center_y": .44}
+    MDTextField:
+        id:val_contraseña
+        hint_text: "Ingresa nuevamente tu contraseña"
+        helper_text: ""
+        font_name: "fonts/Poppins-Regular.ttf"
+        line_color_normal: 255/255, 162/255, 3/255
+        hint_text_color_focus: 255/255, 162/255, 3/255
+        line_color_focus: "black"
+        helper_text_mode: "persistent"
+        pos_hint: {"center_x": .5, "center_y": .32}
+
+        size_hint_x: .85
+        line_color_focus: 0,0,0,1
+        password: True
+    Image:
+        source: "assets/llave.png"
+        size_hint: .10, .10
+        pos_hint: {"center_x": .90, "center_y": .34}
+    
+    MDFlatButton:
+        text: "Registrarse"
+        size_hint: .79, .08
+        font_name: "fonts/Poppins-Medium.ttf"
+        pos_hint: {"center_x": .50, "center_y":.12} 
+        on_release: 
+            root.registrar()
+            reg_correo.text= ""
+            reg_contraseña.text= ""
+            val_contraseña.text= ""
+        canvas.before:
+            Color:
+                rgb: 255/255, 162/255, 3/255
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [6]
+
+<HomeScreen>:
+	MDScrollView:
+        name: "home"
+		MDBoxLayout:
+			orientation: 'vertical'
+			size_hint_y: 1.6
+			MDBoxLayout:
+				padding:10
+				spacing:2
+				size_hint_y:0.3
+				md_bg_color: 255/255, 162/255, 3/255
+				MDTextField:
+					size_hint_x:0.4
+					mode:"fill"
+					hint_text:"Buscar Productos"
+					background_color: "white"
+
+				MDIconButton:
+					icon:"account-key"
+					theme_icon_color: "Custom"
+					icon_color:"white"
+                    on_release:
+                        root.manager.current ='login'
+                        root.manager.transition.direction = 'down'
+				MDIconButton:
+					icon:"chat"
+					theme_icon_color: "Custom"
+					icon_color:"white"
+
+				MDIconButton:
+					icon:"bell-cog"
+					theme_icon_color: "Custom"
+					icon_color:"white"		
+
+			# carrusel de imagenes
+			MDScrollView:
+				# desactivar scroll en eje vertical
+				do_scroll_y:False
+				MDBoxLayout:
+					# ancho del box
+					size_hint_x:4
+					FitImage:
+						source:"image2.jpg"
+					FitImage:
+						source:"image3.jpg"
+					FitImage:
+						source:"image1.png"
+			# iconos
+			MDBoxLayout:
+				padding:10
+				spacing:10
+				size_hint_y:0.3
+
+				# Creacion de 2 MDCards, Balance y QR
+				# codigo QR
+				MDCard:
+					size_hint_x:0.4
+					MDAnchorLayout:
+						anchor_x: 'center'
+						anchor_y:"center"
+						MDIcon:
+							icon:"qrcode"
+							halign:"center"
+							valign:"middle"
+
+				# Balance 
+				MDCard:
+					
+					MDBoxLayout:
+						padding:10
+						MDIcon:
+							icon:"wallet-outline"
+							color:"blue"
+							halign:"right"
+							pos_hint: {'center_y': 0.5}
+						MDLabel:
+							# CREATE TEXT BALANCE
+							text:"$ 100"
+							halign:"center"
+							valign:"middle"
+				
+
+			MDBoxLayout:
+				size_hint_y:0.3
+				padding:10
+				spacing:2
+				MDBoxLayout:
+					spacing:12
+					orientation:"vertical"
+
+					# 5 iconos de categorias
+					MDIcon:
+						icon:"store-outline"
+						color:"#D1553E"
+						font_size: 30
+						pos_hint:{"center_x":0.5}
+
+					MDLabel:
+						text:"Menu Principal"
+						color:"grey"
+						font_size:11
+						halign:"center"
+				MDBoxLayout:
+					spacing:12
+					orientation:"vertical"
+
+		
+					MDIcon:
+						icon:"pencil-box-outline"
+						color:"#15A190"
+						
+						font_size: 30
+						pos_hint:{"center_x":0.5}
+
+					MDLabel:
+						text:"Papeleria"
+						color:"grey"
+						font_size:13
+						halign:"center"
+
+				MDBoxLayout:
+					spacing:12
+					orientation:"vertical"
+
+				
+					MDIcon:
+						icon:"hammer-wrench"
+						color:"#C9051C"
+						
+						font_size: 30
+						pos_hint:{"center_x":0.5}
+
+					MDLabel:
+						text:"Ferreteria"
+						color:"grey"
+						font_size:13
+						halign:"center"
+
+				MDBoxLayout:
+					spacing:12
+					orientation:"vertical"
+
+					
+					MDIcon:
+						icon:"teddy-bear"
+						color:"#C9051C"
+						
+						font_size: 30
+						pos_hint:{"center_x":0.5}
+
+					MDLabel:
+						text:"Jugueteria"
+						color:"grey"
+						font_size:13
+						halign:"center"
+
+				MDBoxLayout:
+					spacing:12
+					orientation:"vertical"
+
+				
+					MDIcon:
+						icon:"earbuds"
+						color:"#449ED0"
+					
+						font_size: 30
+						pos_hint:{"center_x":0.5}
+
+					MDLabel:
+						text:"Electronica"
+						color:"grey"
+						font_size:13
+						halign:"center"
+
+				
+				
+			# IMAGENES PROMOCIONALES
+
+			MDBoxLayout:
+				size_hint_y:0.9
+				padding:10
+				spacing:10
+				MDBoxLayout:
+					radius:20
+					md_bg_color: 255/255, 162/255, 3/255
+					size_hint_x:1.6
+					padding:20
+
+					
+					FitImage:
+						source:"image4.jpg"
+				MDBoxLayout:
+					radius:20
+					md_bg_color: 255/255, 162/255, 3/255
+					
+					padding:20
+
+					
+					FitImage:
+						source:"image5.jpg"
+
+			# VENTA RAPIDA TEXTO
+			MDBoxLayout:
+				size_hint_y:0.3
+				MDIcon:
+					icon:"flash"
+					font_size:40
+					color: 255/255, 162/255, 3/255
+					pos_hint:{"center_y":0.5}
+
+				MDLabel:
+					text:"Ventas Rapidas"
+					font_size:20
+					color: 255/255, 162/255, 3/255
+					bold:True
+					font_style:"H6"
+
+				MDBoxLayout:
+					padding:10
+					MDLabel:
+						text:"Papeleria"
+						color:"grey"
+						halign:"right"
+
+			# SCROLL HORIZONTAL
+			# PRODUCTOS Y PRECIO
+			MDScrollView:
+				do_scroll_y:False
+				do_scroll_x:True
+
+				MDBoxLayout:
+					size_hint_x:1.5
+					size_hint_y:1
+					orientation:"horizontal"
+					MDCard:
+						size_hint_x:0.3
+						elevation:10
+						MDBoxLayout:
+							orientation:"vertical"
+							FitImage:
+								source:"hp.png"
+								size_hint_y:1.5
+								size_hint_x:0.8
+								pos_hint:{"center_y":0.47,"center_x":0.5}
+							MDLabel:
+								text:"$.20"
+								color: 255/255, 162/255, 3/255
+								font_size:30
+								halign:"center"
+								pos_hint:{"center_y":0.97,"center_x":0.5}
+								bold:True
+					MDCard:
+						size_hint_x:0.3
+						elevation:10
+						MDBoxLayout:
+							orientation:"vertical"
+							FitImage:
+								source:"hp2.jpg"
+								size_hint_y:1.2
+								size_hint_x:0.4
+								pos_hint:{"center_y":0.47,"center_x":0.5}
+							MDLabel:
+								text:"$.20"
+								color: 1255/255, 162/255, 3/255
+								font_size:30
+								halign:"center"
+								pos_hint:{"center_y":0.97,"center_x":0.5}
+								bold:True
+			
+
+			# ESPACIO INFERIOR
+			MDBoxLayout:
+				orientation:"vertical"
+				size_hint_y:0.9
+
+			# BARRA INFERIOR
+	MDBottomAppBar:
+		md_bg_color: 255/255, 162/255, 3/255
+
+		# TOPAPPBAR
+		MDTopAppBar:
+			icon:"currency-usd"
+			type:"bottom"
+			# ICONOS DE LA IZQUIERDA
+			left_action_items:[["home"],["smart-card"]]
+
+			# ICONOS DE LA DERECHA
+
+			right_action_items:[["shopping-search"],["exit-run"]]
+
+			# COLOR DE ICONOS
+			icon_color: 255/255, 162/255, 3/255
